@@ -8,13 +8,40 @@
 
 import UIKit
 
-class CurrencyTxtField: UITextField {
+@IBDesignable //i want this changes show in interface builder
 
+class CurrencyTxtField: UITextField {
+    
+    override func prepareForInterfaceBuilder() {
+        customizeView()
+    }
+    
     override func awakeFromNib() {
-        super.awakeFromNib() // when the app is loaded this will load  during the interface builder
+        super.awakeFromNib()
+        customizeView()
+    }
+    
+    
+    func customizeView() {
         backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.25)
         layer.cornerRadius = 5.0
         textAlignment = .center
+        if let p = placeholder{
+            let place = NSAttributedString(string: p, attributes: [.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)])
+            attributedPlaceholder = place
+            textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }
+    }
+    }
+    
+    
+    
+//
+//    override func awakeFromNib() {
+//        super.awakeFromNib() // when the app is loaded this will load  during the interface builder
+//        backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.25)
+//        layer.cornerRadius = 5.0
+//        textAlignment = .center
         //placeholder
         //i have acces bc it s property of the textfield
         //security check/initialization never empty == Good practice
@@ -27,10 +54,10 @@ class CurrencyTxtField: UITextField {
 //    }
 //placeholder! it unwrraping so it must to have data in it. This is why i set it up to empty string
       
-        if let p = placeholder{
-            let place = NSAttributedString(string: p, attributes: [.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)])
-            attributedPlaceholder = place
-            textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        }
-        }
-}
+//        if let p = placeholder{
+//            let place = NSAttributedString(string: p, attributes: [.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)])
+//            attributedPlaceholder = place
+//            textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//        }
+//        }
+
